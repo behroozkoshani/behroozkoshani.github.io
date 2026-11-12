@@ -1,2 +1,5 @@
-# behroozkoshani.github.io
-Cybersecurity portfolio — SOC operations, technical skills, experience, and hands-on projects.
+# Behrooz Koshani — Cybersecurity Portfolio
+
+https://behroozkoshani.github.io/
+
+Static HTML and CSS portfolio. GitHub Pages serves the root of main.
