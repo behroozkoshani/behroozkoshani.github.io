@@ -1,22 +1,20 @@
-# Cybersecurity Engineering Portfolio
+# Cybersecurity Engineering Portfolio — Behrooz Koshani
 
-**Behrooz Koshani | Security engineering · Risk management · Identity security**
+A set of three **runnable defensive security projects** demonstrating cloud configuration review, vulnerability risk triage, and Active Directory identity auditing.
 
-This is a collection of three **independently runnable projects** developed as portfolio demonstrations. Each subdirectory has its own README, Python code, synthetic test data, tests, project architecture, and findings report. The structure follows the evidence-first approach of my [Metasploit attack-simulation lab](https://github.com/behroozkoshani/metasploit-attack-simulation-lab).
+Built in the same **overview → scope → methodology → results → defensive takeaways → evidence** documentation style as the [Metasploit Attack Simulation Lab](https://github.com/behroozkoshani/metasploit-attack-simulation-lab).
 
-> **Project status:** Demonstration implementations using *fabricated* data. The scripts perform offline checks; no live AWS infrastructure, enterprise vulnerability scanner, or domain controller was accessed. Reports and illustrations are examples, not screenshots of real security operations.
+> **Evidence status:** These are offline prototypes using fabricated data. Included visual walkthroughs are illustrated terminal-style examples; they are **not screenshots of actual live infrastructure assessments**. See [Documentation Guide](DOCUMENTATION-GUIDE.md).
 
-## Projects
-
-| Project | Security domain | Deliverable | Source |
+| Project | Core deliverable | Visual walkthrough | Detailed documentation |
 | --- | --- | --- | --- |
-| [Cloud Security Configuration Analyzer](cloud-security-assessment/) | Cloud / Terraform / IAM | Three configuration detection checks plus remediations | [Code](cloud-security-assessment/cloud_security.py) |
-| [Vulnerability Prioritization Engine](vulnerability-management/) | Vulnerability management / risk | Risk-ranked patch backlog, CSV export | [Code](vulnerability-management/prioritize.py) |
-| [Active Directory Account Security Audit](active-directory-security/) | IAM / Windows security | Policy and risky-account findings | [Code](active-directory-security/audit_ad.py) |
+| [Cloud Security Assessment](cloud-security-assessment/) | Terraform JSON configuration analyzer | [3 illustrated screens](cloud-security-assessment/SCREENSHOTS.md) | [Architecture](cloud-security-assessment/ARCHITECTURE.md) · [Findings](cloud-security-assessment/FINDINGS.md) |
+| [Vulnerability Management Engine](vulnerability-management/) | Risk ranking and remediation queue | [3 illustrated screens](vulnerability-management/SCREENSHOTS.md) | [Architecture](vulnerability-management/ARCHITECTURE.md) · [Findings](vulnerability-management/FINDINGS.md) |
+| [Active Directory Security Audit](active-directory-security/) | Identity inventory rules and review flags | [3 illustrated screens](active-directory-security/SCREENSHOTS.md) | [Architecture](active-directory-security/ARCHITECTURE.md) · [Findings](active-directory-security/FINDINGS.md) |
 
-## Reproduce the demonstrations
+## Run the implementations
 
-Prerequisite: Python 3.10+; no external packages or credentials required.
+Python 3.10 or newer; no external dependencies or cloud credentials:
 
 ```bash
 cd projects/cloud-security-assessment
@@ -24,7 +22,7 @@ python3 cloud_security.py sample-plan.json
 python3 -m unittest discover -p 'test_*.py' -v
 
 cd ../vulnerability-management
-python3 prioritize.py sample-vulnerabilities.csv --output prioritized.csv
+python3 prioritize.py sample-vulnerabilities.csv
 python3 -m unittest discover -p 'test_*.py' -v
 
 cd ../active-directory-security
@@ -32,18 +30,10 @@ python3 audit_ad.py sample-users.csv
 python3 -m unittest discover -p 'test_*.py' -v
 ```
 
-A [GitHub Actions workflow](../.github/workflows/cybersecurity-projects.yml) also runs unit tests and smoke tests when relevant files change.
+## Documentation and test coverage
 
-## How to evaluate these projects
+Each directory contains a main README, architecture overview, findings report, screenshots guide, three illustrated visual examples, source, synthetic data, and tests. [GitHub Actions](../../actions) runs Python tests on changes. Check its actual execution status rather than assuming all runs pass.
 
-Inspect the source and tests, run the sample data, compare output with each project’s `FINDINGS.md`, and review the limitations. These are deliberately small, transparent prototypes meant to be extended with approved real-world integrations—not representations of completed enterprise deployments.
+## Security boundary
 
-## Security and privacy
-
-Use only authorized environments. Terraform plans and real scan/identity exports may contain sensitive information; do not commit production data. All provided example files use fictitious values.
-
-## Next-stage engineering work
-
-- Cloud: recognize additional AWS resource schemas, produce SARIF, validate against Checkov.
-- Vulnerability management: import scanner exports, CISA KEV/EPSS enrichment, rescan verification.
-- Active Directory: read-only lab exporter, nested-group assessment, exception handling and remediation validation.
+No live AWS deployment, external vulnerability scanning, or directory administration is conducted by these scripts. Only run any future real-world tests in explicitly authorized environments. Review [SECURITY.md](SECURITY.md) before using sensitive scan exports or IAM inventories.
