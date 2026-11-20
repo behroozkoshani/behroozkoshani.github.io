@@ -1,6 +1,0 @@
-sam_account_name,enabled,privileged,password_never_expires,preauth_required,last_logon_days_ago
-admin.demo,true,true,true,true,120
-service.demo,true,false,true,true,10
-legacy.demo,true,false,false,false,110
-regular.demo,true,false,false,true,5
-disabled.demo,false,true,true,false,200
