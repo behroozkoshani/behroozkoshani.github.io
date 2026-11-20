@@ -1,0 +1,8 @@
+# Local reports produced by the demonstration CLI
+prioritized.csv
+*.log
+*.out
+.env
+__pycache__/
+.pytest_cache/
+.venv/
