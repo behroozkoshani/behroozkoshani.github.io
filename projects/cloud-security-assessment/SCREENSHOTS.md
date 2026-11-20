@@ -18,37 +18,6 @@ The two PNGs below are real captures of terminal windows generated while actuall
 
 The screenshot text was captured from Xterm with Xvfb while running locally, not typed into an illustration. The same Python source matches the GitHub source blob; the test dataset is harmless, fabricated example data. See [EVIDENCE.md](EVIDENCE.md) and [FINDINGS.md](FINDINGS.md) for scope and findings. Only an authorized, separately documented lab can substantiate a claim of real cloud- or directory-security testing.
 
----
+## What the screenshots prove—and what they don't
 
-## Previously prepared illustrative workflow diagrams
-
-
-These terminal-style images are **illustrations of expected program behavior** derived from the bundled fabricated inputs, not photographs or captures of a real live scan or domain. The terminal screens make the workflows easier to inspect visually. The actual Python program is provided in this same directory for independent execution.
-
-## 1. Inspect the source input
-
-![Synthetic input walkthrough](screenshots/01-input-review.svg)
-
-The first visual explains what the program reads and which fields matter for the security analysis. Open the corresponding `sample-*.json` or `sample-*.csv` file to inspect the actual input records.
-
-## 2. Understand the expected analysis output
-
-![Illustrative terminal findings](screenshots/02-detection-output.svg)
-
-The second visual shows a condensed illustrative console transcript from the included input. Compare the rule names, risk classifications, and remediation suggestions with the program's actual output after running it yourself. These are **not** screenshots of a performed real-world assessment.
-
-## 3. Review the analyst workflow
-
-![Example review workflow](screenshots/03-remediation-flow.svg)
-
-The third visual outlines what a human security analyst would do **after** reviewing a finding: validate the affected asset, assess policy exceptions, assign remediation, and independently verify the fix. This is a recommended process, **not** evidence those operational steps were carried out.
-
-## Capture your own real execution evidence
-
-1. In a local terminal, navigate to this project directory.
-2. Run the command described in `README.md` using the supplied sample input.
-3. Capture the terminal window showing the command, tool output, and system clock if appropriate.
-4. Remove usernames, access keys, proprietary paths, IP addresses, and other private information before publishing.
-5. Commit the capture with a descriptive date and clearly state whether the input was synthetic or from an authorized lab.
-
-For an enterprise-grade demonstration, also include a separately captured remediation validation and accompanying scan/export evidence. Do not label illustrative visuals as actual terminal captures.
+These screenshots demonstrate the actual local Python program and included unit tests executing on fabricated test input. They do not establish that an AWS account, enterprise vulnerability scanner or Active Directory forest was accessed. To document a deployed lab, capture and publish separate, sanitized evidence after obtaining authorization.

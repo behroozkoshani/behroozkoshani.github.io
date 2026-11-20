@@ -9,8 +9,8 @@ This document explains the files included in each of the three portfolio project
 | `README.md` | Main narrative: goals, scope, setup, technologies, steps, risks, and roadmap | Read first to understand what was built and what was not built. |
 | `ARCHITECTURE.md` | Text architecture diagram showing data source, parser, rules, findings and decision points | Shows the system's data flow and trust boundaries; it does not document a deployed enterprise topology. |
 | `FINDINGS.md` | Written assessment of synthetic findings and suggested remediations | Example analyst report based on fabricated input, not evidence of a production vulnerability. |
-| `SCREENSHOTS.md` | Annotated visual walkthrough and evidence instructions | Images are clearly marked illustrations of sample workflow, not captured enterprise activity. |
-| `screenshots/*.svg` | Readable terminal-style visual examples with captions | Intended for presentation; use the executable code for verification. |
+| `SCREENSHOTS.md` | Real local CLI run and unit-test evidence | Captures of executable Python demonstrations using synthetic fixtures, not enterprise activity. |
+| `screenshots/verified-local-*.png` | Genuine locally captured terminal screenshots | Python sample output and unit tests were actually executed; no cloud or directory systems were accessed. |
 | Main `*.py` script | Executable, dependency-free defensive analyzer | Run it locally on the included fabricated sample to independently reproduce behavior. |
 | `sample-*.csv` / `sample-*.json` | Minimal harmless input records | These synthetic datasets enable repeatable demonstrations without exposing customer information. |
 | `test_*.py` | Unit tests for selected detection and validation cases | Useful for understanding expected behavior and catching regressions; does not prove complete security coverage. |

@@ -6,9 +6,9 @@ A set of three **runnable defensive security projects** demonstrating cloud conf
 
 | Project | Core deliverable | Visual walkthrough | Detailed documentation |
 | --- | --- | --- | --- |
-| [Cloud Security Assessment](cloud-security-assessment/) | Terraform JSON configuration analyzer | [3 illustrated screens](cloud-security-assessment/SCREENSHOTS.md) | [Architecture](cloud-security-assessment/ARCHITECTURE.md) · [Findings](cloud-security-assessment/FINDINGS.md) |
-| [Vulnerability Management Engine](vulnerability-management/) | Risk ranking and remediation queue | [3 illustrated screens](vulnerability-management/SCREENSHOTS.md) | [Architecture](vulnerability-management/ARCHITECTURE.md) · [Findings](vulnerability-management/FINDINGS.md) |
-| [Active Directory Security Audit](active-directory-security/) | Identity inventory rules and review flags | [3 illustrated screens](active-directory-security/SCREENSHOTS.md) | [Architecture](active-directory-security/ARCHITECTURE.md) · [Findings](active-directory-security/FINDINGS.md) |
+| [Cloud Security Assessment](cloud-security-assessment/) | Terraform JSON configuration analyzer | [2 verified terminal screenshots](cloud-security-assessment/SCREENSHOTS.md) | [Architecture](cloud-security-assessment/ARCHITECTURE.md) · [Findings](cloud-security-assessment/FINDINGS.md) |
+| [Vulnerability Management Engine](vulnerability-management/) | Risk ranking and remediation queue | [2 verified terminal screenshots](vulnerability-management/SCREENSHOTS.md) | [Architecture](vulnerability-management/ARCHITECTURE.md) · [Findings](vulnerability-management/FINDINGS.md) |
+| [Active Directory Security Audit](active-directory-security/) | Identity inventory rules and review flags | [2 verified terminal screenshots](active-directory-security/SCREENSHOTS.md) | [Architecture](active-directory-security/ARCHITECTURE.md) · [Findings](active-directory-security/FINDINGS.md) |
 
 ## Run the implementations
 
@@ -30,7 +30,7 @@ python3 -m unittest discover -p 'test_*.py' -v
 
 ## Documentation and test coverage
 
-Each directory contains a main README, architecture overview, findings report, screenshots guide, three illustrated visual examples, source, synthetic data, and tests. [GitHub Actions](../../actions) runs Python tests on changes. Check its actual execution status rather than assuming all runs pass.
+Each directory contains a main README, architecture overview, findings report, screenshots guide, two captured local execution screenshots, source, synthetic data, and tests. [GitHub Actions](../../actions) runs Python tests on changes. Check its actual execution status rather than assuming all runs pass.
 
 ## Security boundary
 

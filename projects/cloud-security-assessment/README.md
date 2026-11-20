@@ -32,24 +32,13 @@ The included synthetic sample has intentional findings. Never upload a real Terr
 Not all Terraform provider schemas are handled; many resources are not checked. This tool flags selected patterns, not a full cloud security assessment. The sample is fabricated and demonstrates the analyzer only.
 
 
-## Visual evidence and narrated workflow
+## Documentation and evidence
 
-This repository includes [three annotated visual examples](SCREENSHOTS.md) that explain the synthetic input, expected CLI findings, and analyst follow-up steps. They are **illustrations**, not captured evidence from a live environment.
-
-![Illustrative findings display](screenshots/02-detection-output.svg)
-
-## Complete documentation map
-
-- [Architecture and data-flow design](ARCHITECTURE.md): how inputs, analysis, and output connect; plus trust boundaries and limitations.
-- [Detailed findings report](FINDINGS.md): what the example flags, why it matters, and how to investigate or remediate.
-- [Visual walkthrough](SCREENSHOTS.md): explanation of each illustration and instructions for recording authentic lab screenshots.
-- [Portfolio-wide documentation guide](../DOCUMENTATION-GUIDE.md): exact purpose of each file and what work can truthfully be claimed.
-- [Executable code](./cloud_security.py): implementation details and reproducible logic.
-
-### Evidence statement
-
-The packaged sample data is fabricated. The image above is an **illustrative terminal visualization**, not a real captured assessment screenshot. A true hands-on lab screenshot should be added only after executing and documenting that lab.
-
+- [System architecture](ARCHITECTURE.md): data flow, trust boundaries, assumptions and technical limitations.
+- [Security findings](FINDINGS.md): interpreted findings, risk, and recommended review or remediation.
+- [Local evidence report](EVIDENCE.md): exact commands, execution results and honest scope statement.
+- [Execution screenshots](SCREENSHOTS.md): genuine captured terminal output for the sample run and its tests.
+- [Implementation](./cloud_security.py): Python analyzer and bundled tests.
 
 ## Verified local execution evidence
 
@@ -59,4 +48,4 @@ The source code and bundled demonstration inputs were executed locally on **Pyth
 
 ![Verified local unit test output](screenshots/verified-local-test.png)
 
-See [EVIDENCE.md](EVIDENCE.md) for exact commands, findings, reproducibility instructions, and limitations. Previously included SVG terminal images remain labeled illustrations and must not be confused with these captured screenshots.
+See [EVIDENCE.md](EVIDENCE.md) for exact commands, findings, reproducibility instructions, and limitations. The original illustrative placeholder images have been removed and replaced with actual local execution captures.
