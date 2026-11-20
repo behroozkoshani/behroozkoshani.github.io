@@ -1,4 +1,27 @@
-# Visual Walkthrough: Active Directory security
+# Genuine Execution Screenshots (Local Synthetic Lab)
+
+The two PNGs below are real captures of terminal windows generated while actually running the checked-in Python project and its unit tests against non-sensitive synthetic data. They **are not captures of live AWS accounts, corporate vulnerability scans, or Active Directory**.
+
+## 1. Local execution
+
+![Actual captured local terminal execution](screenshots/verified-local-run.png)
+
+**Command:** `python3 audit_ad.py sample-users.csv`. The script completed with process exit code 0. Four review findings were flagged from fictitious user records: two for admin.demo and two for legacy.demo.
+
+## 2. Unit test execution
+
+![Actual captured local unit test output](screenshots/verified-local-test.png)
+
+**Command:** `python3 -m unittest discover -v` from the project directory. All 3 included unit tests passed in this execution.
+
+## 3. Interpretation and repeatability
+
+The screenshot text was captured from Xterm with Xvfb while running locally, not typed into an illustration. The same Python source matches the GitHub source blob; the test dataset is harmless, fabricated example data. See [EVIDENCE.md](EVIDENCE.md) and [FINDINGS.md](FINDINGS.md) for scope and findings. Only an authorized, separately documented lab can substantiate a claim of real cloud- or directory-security testing.
+
+---
+
+## Previously prepared illustrative workflow diagrams
+
 
 These terminal-style images are **illustrations of expected program behavior** derived from the bundled fabricated inputs, not photographs or captures of a real live scan or domain. The terminal screens make the workflows easier to inspect visually. The actual Python program is provided in this same directory for independent execution.
 

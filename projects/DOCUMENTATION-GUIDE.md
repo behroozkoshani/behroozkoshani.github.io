@@ -24,7 +24,7 @@ This document explains the files included in each of the three portfolio project
 
 **Tier 2 — Reproducible demonstration:** Fabricated input, documented expected outputs, automated tests, and visual explanations. All three projects provide this.
 
-**Tier 3 — Captured authorized lab:** Authentic screenshots or logs from a real run in an owned/approved environment, with versioned inputs and results. **Not included yet.**
+**Tier 3 — Captured local execution:** The three Python scripts and their existing tests were executed on synthetic sample files; six genuine Xterm screen captures of program and unit-test output are included. **Not an AWS, vulnerability scanner, or Active Directory integration lab.**
 
 **Tier 4 — Verified operational outcome:** Before/after security measurements, owner-approved remediation, and independent validation. **Not included yet.**
 

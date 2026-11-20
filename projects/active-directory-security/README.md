@@ -48,3 +48,14 @@ This repository includes [three annotated visual examples](SCREENSHOTS.md) that 
 ### Evidence statement
 
 The packaged sample data is fabricated. The image above is an **illustrative terminal visualization**, not a real captured assessment screenshot. A true hands-on lab screenshot should be added only after executing and documenting that lab.
+
+
+## Verified local execution evidence
+
+The source code and bundled demonstration inputs were executed locally on **Python 3.13.5**, November 19, 2026 (US Eastern). These are genuine screenshots from an Xterm window showing the locally executed script output and test results. The input data remains **synthetic** and there was no access to production systems.
+
+![Verified local script output](screenshots/verified-local-run.png)
+
+![Verified local unit test output](screenshots/verified-local-test.png)
+
+See [EVIDENCE.md](EVIDENCE.md) for exact commands, findings, reproducibility instructions, and limitations. Previously included SVG terminal images remain labeled illustrations and must not be confused with these captured screenshots.

@@ -2,9 +2,7 @@
 
 A set of three **runnable defensive security projects** demonstrating cloud configuration review, vulnerability risk triage, and Active Directory identity auditing.
 
-Built in the same **overview → scope → methodology → results → defensive takeaways → evidence** documentation style as the [Metasploit Attack Simulation Lab](https://github.com/behroozkoshani/metasploit-attack-simulation-lab).
-
-> **Evidence status:** These are offline prototypes using fabricated data. Included visual walkthroughs are illustrated terminal-style examples; they are **not screenshots of actual live infrastructure assessments**. See [Documentation Guide](DOCUMENTATION-GUIDE.md).
+> **Evidence status:** These are working offline Python demonstrations using synthetic datasets. Local executions and unit tests were captured on November 19, 2026 (EST); the captures do **not** show live AWS, enterprise scanner, or Active Directory systems. See [Documentation Guide](DOCUMENTATION-GUIDE.md).
 
 | Project | Core deliverable | Visual walkthrough | Detailed documentation |
 | --- | --- | --- | --- |
@@ -37,3 +35,7 @@ Each directory contains a main README, architecture overview, findings report, s
 ## Security boundary
 
 No live AWS deployment, external vulnerability scanning, or directory administration is conducted by these scripts. Only run any future real-world tests in explicitly authorized environments. Review [SECURITY.md](SECURITY.md) before using sensitive scan exports or IAM inventories.
+
+## Captured local demonstrations
+
+Each project now contains real Xterm screenshots of its **local Python execution** and **unit tests**, plus an [evidence report](DOCUMENTATION-GUIDE.md). The data is fabricated and does not imply access to deployed cloud or domain environments.
