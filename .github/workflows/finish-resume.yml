@@ -1,0 +1,102 @@
+name: Finish resume updates
+on:
+  push:
+    paths:
+      - ".github/workflows/finish-resume.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF editing dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-crosextra-carlito
+          python -m pip install --quiet pymupdf
+      - name: Apply and validate resume edits
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os
+          import fitz
+          
+          pdf=Path("Behrooz_Koshani_Resume.pdf")
+          doc=fitz.open(pdf)
+          if len(doc)!=1: raise RuntimeError("Expected one-page resume")
+          p=doc[0]
+          t=p.get_text()
+          if "Simple TCP Port Scanner" not in t: raise RuntimeError("Scanner project missing")
+          meta="https://github.com/behroozkoshani/metasploit-attack-simulation-lab"
+          scan="https://github.com/behroozkoshani/simple-port-scanner"
+          profile="https://github.com/behroozkoshani"
+          linked="https://www.linkedin.com/in/behrooz-koshani"
+          if "IT Infrastructure Analyst" in t and "github.com/behroozkoshani" in t and "Associate Desktop Admin" not in t:
+              print("Resume already updated")
+              raise SystemExit(0)
+          if "Associate Desktop Admin" not in t: raise RuntimeError("Old title not found; source layout changed")
+          
+          for link in list(p.get_links()):
+              if link.get("uri")==linked or (link.get("uri")==scan and link["from"].y0>620):
+                  p.delete_link(link)
+          
+          p.add_redact_annot(fitz.Rect(96,31.6,511,42.95),fill=(1,1,1))
+          p.add_redact_annot(fitz.Rect(30.5,233.6,225,245),fill=(1,1,1))
+          p.add_redact_annot(fitz.Rect(63,621,254,637),fill=(1,1,1))
+          p.apply_redactions(images=0,graphics=0,text=0)
+          
+          fontfile="/usr/share/fonts/truetype/crosextra/Carlito-Regular.ttf"
+          boldfile="/usr/share/fonts/truetype/crosextra/Carlito-Bold.ttf"
+          p.insert_font(fontname="SiteContact",fontfile=fontfile)
+          p.insert_font(fontname="SiteTitle",fontfile=boldfile)
+          font=fitz.Font(fontfile=fontfile)
+          blue=(31/255,64/255,120/255)
+          black=(0,0,0)
+          segments=[
+          ("Manassas, VA  |  (571) 477-3522  |  Behrooz.koshani@yahoo.com  |  ",black,None),
+          ("linkedin.com/in/behrooz-koshani",blue,linked),
+          ("  |  ",black,None),
+          ("github.com/behroozkoshani",blue,profile)]
+          size=8.85
+          width=sum(font.text_length(s,fontsize=size) for s,_,_ in segments)
+          if width>=545: raise RuntimeError("Contact info would overflow page")
+          x=(612-width)/2
+          for s,color,uri in segments:
+              w=font.text_length(s,fontsize=size)
+              p.insert_text((x,39.85),s,fontname="SiteContact",fontsize=size,color=color)
+              if uri: p.insert_link({"kind":fitz.LINK_URI,"from":fitz.Rect(x-0.5,32,x+w+0.5,42.4),"uri":uri})
+              x+=w
+          p.insert_text((31.1,241.85),"IT Infrastructure Analyst",fontsize=10,fontname="SiteTitle",color=black)
+          
+          for uri,area in ((meta,fitz.Rect(540,587,582,601)),(scan,fitz.Rect(540,604,582,618))):
+              if not any(l.get("uri")==uri and l["from"].intersects(area) for l in p.get_links()):
+                  p.insert_link({"kind":fitz.LINK_URI,"from":area,"uri":uri})
+          
+          temp=Path("resume-revised.tmp.pdf")
+          doc.save(temp,garbage=4,deflate=True)
+          doc.close()
+          check=fitz.open(temp)
+          text=check[0].get_text()
+          urls=[l.get("uri") for l in check[0].get_links()]
+          if len(check)!=1: raise RuntimeError("Not one page")
+          for required in ("IT Infrastructure Analyst","github.com/behroozkoshani","Metasploit Attack Simulation","Simple TCP Port Scanner"):
+              if required not in text: raise RuntimeError(f"Required text missing: {required}")
+          for forbidden in ("Associate Desktop Admin","github.com/behroozkoshani/simple-port-scanner","Cloud Security Analyzer"):
+              if forbidden in text: raise RuntimeError(f"Outdated text remains: {forbidden}")
+          for url in (meta,scan,profile,linked):
+              if urls.count(url)!=1: raise RuntimeError(f"Incorrect hyperlink: {url}, {urls}")
+          check.close()
+          os.replace(temp,pdf)
+          print("Website resume PDF revised and validated")
+          PY
+      - name: Publish updated resume PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Behrooz_Koshani_Resume.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "Restore IT Infrastructure Analyst and add profile GitHub link to resume"
+            git push
+          fi
